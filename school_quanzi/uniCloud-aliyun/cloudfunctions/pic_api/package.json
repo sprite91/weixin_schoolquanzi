@@ -1,0 +1,9 @@
+{
+  "name": "pic_api",
+  "dependencies": {
+    "xcx_utils": "file:../common/xcx_utils"
+  },
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

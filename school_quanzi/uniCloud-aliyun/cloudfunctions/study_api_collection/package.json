@@ -1,0 +1,9 @@
+{
+  "name": "study_api_collection",
+  "dependencies": {
+    "xcx_utils": "file:../common/xcx_utils"
+  },
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

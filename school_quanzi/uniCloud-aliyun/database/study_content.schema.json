@@ -1,0 +1,107 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["_title"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"_title": {
+			"title": "标题",
+			"bsonType": "string",
+			"description": "请输入标题"
+		},
+		"state": {
+			"title": "状态",
+			"bsonType": "bool",
+			"defaultValue": true
+		},
+		"navid": {
+			"title": "分类",
+			"bsonType": "string",
+			"foreignKey": "quanzi_study_nav._id",
+			"enum": {
+				"collection": "quanzi_study_nav",
+				"field": "_id as value, classname as text"
+			}
+		},
+		"orderid": {
+			"title": "排序",
+			"description": "请输入序号",
+			"bsonType": "int"
+		},
+
+		"content": {
+			"bsonType": "string",
+			"title": "文章内容",
+			"description": "文章内容",
+			"label": "文章内容",
+			"trim": "right"
+		},
+		"author": {
+			"bsonType": "string",
+			"title": "作者",
+			"description": "请输入作者",
+			"label": "作者",
+			"trim": "right"
+		},
+		"article_status": {
+			"bsonType": "int",
+			"title": "文章状态",
+			"description": "文章状态：0 草稿箱 1 已发布",
+			"defaultValue": 0,
+			"enum": [{
+					"value": 0,
+					"text": "草稿箱"
+				},
+				{
+					"value": 1,
+					"text": "已发布"
+				}
+			]
+		},
+		"view_count": {
+			"bsonType": "int",
+			"title": "阅读数量",
+			"description": "阅读数量",
+			"defaultValue": 666
+		},
+		"is_essence": {
+			"bsonType": "bool",
+			"title": "阅读加精",
+			"description": "阅读加精",
+			"permission": {
+				"write": false
+			}
+		},
+		"avatar": {
+			"bsonType": "file",
+			"title": "封面大图",
+			"description": "缩略图地址",
+			"label": "封面大图",
+			"trim": "both"
+		},
+		"publish_date": {
+			"bsonType": "timestamp",
+			"title": "发表时间",
+			"description": "发表时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"publish_ip": {
+			"bsonType": "string",
+			"title": "发布文章时IP地址",
+			"description": "发表时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		}
+	}
+}
